@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --accent-blue: #2563eb;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --green: #22c55e;
+            --red: #ef4444;
+            --orange: #f59e0b;
+            --gradient: linear-gradient(90deg, #3b82f6 0%, #a855f7 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        /* Top Navigation */
+       .top-banner { background: #1d4ed8; color: white; padding: 15px 50px; }
+        nav { background: white; padding: 0 50px; display: flex; gap: 25px; border-bottom: 1px solid #e2e8f0; }
+        nav a { text-decoration: none; color: #64748b; padding: 15px 0; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        nav a.active-page { color: #2563eb; border-bottom: 2px solid #2563eb; }
+        
+
+        /* Main Content */
+        .container { padding: 30px 40px; max-width: 1250px; margin: auto; }
+
+        .header-title h1 { margin: 0; font-size: 24px; }
+        .header-title p { color: var(--text-muted); margin-top: 5px; font-size: 14px; }
+
+        /* Purple Date Banner */
+        .date-banner {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .stat-card .val { font-size: 22px; font-weight: 700; display: block; }
+        .stat-card .lab { color: var(--text-muted); font-size: 12px; }
+
+        /* Today's Classes List */
+        .section-box {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .section-title { font-weight: 700; margin-bottom: 15px; display: block; }
+
+        .class-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .class-row:last-child { border-bottom: none; }
+        .badge {
+            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .badge-completed { background: #dcfce7; color: #166534; }
+        .badge-progress { background: #e0f2fe; color: #0369a1; }
+        
+        .btn-mark {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Records Table */
+        .table-container { background: white; border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: #f8fafc; padding: 15px; font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+        td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+        
+        .status-dot { font-size: 18px; }
+        .pct-badge {
+            background: #f1f5f9;
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-banner"><h1><i class="fas fa-graduation-cap"></i> College Management System</h1></div>
+    <nav>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-users"></i> Students</a>
+        <a href="#" class="active-page"><i class="fas fa-chalkboard-teacher"></i> Faculty</a>
+        <a href="#"><i class="fas fa-book"></i> Courses</a>
+        <a href="#"><i class="fas fa-calendar-check"></i> Attendance</a>
+        <a href="#"><i class="fas fa-file-alt"></i> Exams</a>
+        <a href="#"><i class="fas fa-book-reader"></i> Library</a>
+        <a href="#"><i class="fas fa-bell"></i> Notices</a>
+    </nav>
+
+    <div class="container">
+        <div class="header-title">
+            <h1>Attendance Management</h1>
+            <p>Track and manage student attendance</p>
+        </div>
+
+        <div class="date-banner">
+            <span style="font-size: 24px;">📅</span>
+            <div>
+                <div style="font-size: 13px; opacity: 0.9;">Today's Date</div>
+                <div style="font-size: 20px; font-weight: 700;">Tuesday, March 10, 2026</div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span style="color: var(--green); font-size: 24px;">✅</span>
+                <div><span class="lab">Present Today</span><span class="val">2,634</span></div>
+            </div>
+            <div class="stat-card">
+                <span style="color: var(--red); font-size: 24px;">❌</span>
+                <div><span class="lab">Absent Today</span><span class="val">178</span></div>
+            </div>
+            <div class="stat-card">
+                <span style="color: var(--orange); font-size: 24px;">🕒</span>
+                <div><span class="lab">Late Today</span><span class="val">35</span></div>
+            </div>
+            <div class="stat-card">
+                <span style="color: var(--accent-blue); font-size: 24px;">👥</span>
+                <div><span class="lab">Total Students</span><span class="val">2,847</span></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <span class="section-title">Today's Classes</span>
+            
+            <div class="class-row">
+                <div>
+                    <div style="font-weight: 600;">CS101 - Introduction to Programming</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Dr. Robert Anderson • 9:00 AM - 10:30 AM</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span class="badge badge-completed">Completed</span>
+                    <button class="btn-mark">Mark Attendance</button>
+                </div>
+            </div>
+
+            <div class="class-row">
+                <div>
+                    <div style="font-weight: 600;">EE201 - Circuit Analysis</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Dr. Lisa Martinez • 11:00 AM - 12:30 PM</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <span class="badge badge-progress">In Progress</span>
+                    <button class="btn-mark">Mark Attendance</button>
+                </div>
+            </div>
+        </div>
+
+        <span class="section-title">Recent Attendance Records</span>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>ID</th>
+                        <th>CS101</th>
+                        <th>EE201</th>
+                        <th>CS202</th>
+                        <th>Attendance %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>STU001</td>
+                        <td style="color: var(--green)">✅</td>
+                        <td style="color: var(--green)">✅</td>
+                        <td style="color: var(--red)">❌</td>
+                        <td><span class="pct-badge">92%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>STU002</td>
+                        <td style="color: var(--green)">✅</td>
+                        <td style="color: var(--green)">✅</td>
+                        <td style="color: var(--green)">✅</td>
+                        <td><span class="pct-badge" style="background:#dcfce7; color:#166534">95%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Emily Brown</td>
+                        <td>STU004</td>
+                        <td style="color: var(--green)">✅</td>
+                        <td style="color: var(--orange)">🕒</td>
+                        <td style="color: var(--green)">✅</td>
+                        <td><span class="pct-badge">90%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
