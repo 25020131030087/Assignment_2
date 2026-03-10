@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - College Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+/* Navbar from previous design */
+.navbar { background-color: #1d4ed8; color: white; padding: 12px 50px; }
+.logo { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.logo h1 { font-size: 1.4rem; }
+.logo span { font-size: 0.75rem; opacity: 0.8; }
+
+nav {
+    display: flex; gap: 20px; background: white;
+    margin: 0 -50px -12px -50px; padding: 10px 50px;
+    border-bottom: 1px solid #e2e8f0;
+}
+nav a { text-decoration: none; color: #64748b; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; }
+nav a.active { color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 8px; }
+
+/* Main Content Layout */
+.container { padding: 40px 60px; }
+
+.header-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.title-area h2 { font-size: 1.6rem; color: #0f172a; }
+.title-area p { color: #64748b; font-size: 0.9rem; margin-top: 4px; }
+
+.btn-add {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Table Card Wrapper */
+.table-wrapper {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+}
+
+/* Search Bar */
+.search-bar-container {
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.search-input {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input i {
+    position: absolute;
+    left: 15px;
+    color: #94a3b8;
+}
+
+.search-input input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.btn-filter {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 0 15px;
+    border-radius: 8px;
+    color: #475569;
+    cursor: pointer;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    background-color: #fcfcfc;
+    padding: 15px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #64748b;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+    vertical-align: middle;
+}
+
+.gpa-badge {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid #dcfce7;
+}
+
+.contact-info {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.contact-info i { width: 15px; margin-right: 5px; }
+
+.actions a {
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.actions .view { color: #2563eb; }
+.actions .edit { color: #16a34a; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0f172a;
+    color: white;
+    font-size: 0.8rem;
+    margin-top: 40px;
+}
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+                <h1>College Management System</h1>
+                <span>Excellence in Education</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="active"><i class="fas fa-users"></i> Students</a>
+            <a href="#"><i class="fas fa-chalkboard-teacher"></i> Faculty</a>
+            <a href="#"><i class="fas fa-book"></i> Courses</a>
+            <a href="#"><i class="fas fa-calendar-check"></i> Attendance</a>
+            <a href="#"><i class="fas fa-file-alt"></i> Exams</a>
+            <a href="#"><i class="fas fa-book-reader"></i> Library</a>
+            <a href="#"><i class="fas fa-bell"></i> Notices</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="header-action">
+            <div class="title-area">
+                <h2>Students</h2>
+                <p>Manage student information and records</p>
+            </div>
+            <button class="btn-add"><i class="fas fa-plus"></i> Add Student</button>
+        </div>
+
+        <div class="table-wrapper">
+            <div class="search-bar-container">
+                <div class="search-input">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search students by name, ID, or department...">
+                </div>
+                <button class="btn-filter"><i class="fas fa-filter"></i> Filter</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Year</th>
+                        <th>GPA</th>
+                        <th>Contact</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>STU001</strong></td>
+                        <td>John Doe</td>
+                        <td>Computer Science</td>
+                        <td>3rd Year</td>
+                        <td><span class="gpa-badge">3.8</span></td>
+                        <td class="contact-info">
+                            <span><i class="far fa-envelope"></i> john@college.edu</span><br>
+                            <span><i class="fas fa-phone-alt"></i> (555) 123-4567</span>
+                        </td>
+                        <td class="actions">
+                            <a href="#" class="view">View</a>
+                            <a href="#" class="edit">Edit</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>STU002</strong></td>
+                        <td>Jane Smith</td>
+                        <td>Electrical Engineering</td>
+                        <td>2nd Year</td>
+                        <td><span class="gpa-badge">3.9</span></td>
+                        <td class="contact-info">
+                            <span><i class="far fa-envelope"></i> jane@college.edu</span><br>
+                            <span><i class="fas fa-phone-alt"></i> (555) 234-5678</span>
+                        </td>
+                        <td class="actions">
+                            <a href="#" class="view">View</a>
+                            <a href="#" class="edit">Edit</a>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 College Management System. All rights reserved.
+    </footer>
+
+</body>
+</html>
