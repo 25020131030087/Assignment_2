@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty - College Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Inherit global styles from above... */
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; }
+        .top-banner { background: #1d4ed8; color: white; padding: 15px 50px; }
+        nav { background: white; padding: 0 50px; display: flex; gap: 25px; border-bottom: 1px solid #e2e8f0; }
+        nav a { text-decoration: none; color: #64748b; padding: 15px 0; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        nav a.active-page { color: #2563eb; border-bottom: 2px solid #2563eb; }
+        
+        .container { padding: 30px 50px; }
+        
+        /* Faculty Specific Styles */
+        .page-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .btn-add { background: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        .search-box { background: white; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 30px; display: flex; align-items: center; }
+        .search-box input { border: none; width: 100%; margin-left: 10px; outline: none; }
+
+        .faculty-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .faculty-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: relative; }
+        
+        .faculty-id { position: absolute; right: 20px; top: 20px; background: #eff6ff; color: #3b82f6; padding: 2px 8px; border-radius: 5px; font-size: 0.7rem; font-weight: bold; }
+        
+        .profile-pic { width: 50px; height: 50px; border-radius: 50%; background: #a855f7; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
+        
+        .faculty-card h4 { margin: 0; font-size: 1.1rem; }
+        .faculty-card p { margin: 5px 0; font-size: 0.85rem; color: #64748b; }
+        .info-row { font-size: 0.8rem; color: #475569; margin: 8px 0; display: flex; align-items: center; gap: 10px; }
+        
+        .card-actions { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-profile { background: #2563eb; color: white; border: none; flex: 3; padding: 10px; border-radius: 6px; cursor: pointer; }
+        .btn-edit { background: white; border: 1px solid #e2e8f0; flex: 1; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="top-banner"><h1><i class="fas fa-graduation-cap"></i> College Management System</h1></div>
+    <nav>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-users"></i> Students</a>
+        <a href="#" class="active-page"><i class="fas fa-chalkboard-teacher"></i> Faculty</a>
+        <a href="#"><i class="fas fa-book"></i> Courses</a>
+        <a href="#"><i class="fas fa-calendar-check"></i> Attendance</a>
+        <a href="#"><i class="fas fa-file-alt"></i> Exams</a>
+        <a href="#"><i class="fas fa-book-reader"></i> Library</a>
+        <a href="#"><i class="fas fa-bell"></i> Notices</a>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div><h2>Faculty</h2><p>Manage faculty members and their information</p></div>
+            <button class="btn-add">+ Add Faculty</button>
+        </div>
+
+        <div class="search-box">
+            <i class="fas fa-search" style="color:#94a3b8"></i>
+            <input type="text" placeholder="Search faculty by name, department, or position...">
+        </div>
+
+        <div class="faculty-grid">
+            <div class="faculty-card">
+                <div class="faculty-id">FAC001</div>
+                <div class="profile-pic">DRA</div>
+                <h4>Dr. Robert Anderson</h4>
+                <p>Professor</p>
+                <p>Computer Science</p>
+                <div class="info-row"><i class="far fa-envelope"></i> robert.a@college.edu</div>
+                <div class="info-row"><i class="fas fa-phone"></i> (555) 111-2222</div>
+                <div class="info-row"><i class="fas fa-briefcase"></i> 15 years experience</div>
+                <div class="card-actions">
+                    <button class="btn-profile">View Profile</button>
+                    <button class="btn-edit">Edit</button>
+                </div>
+            </div>
+            </div>
+    </div>
+</body>
+</html>
